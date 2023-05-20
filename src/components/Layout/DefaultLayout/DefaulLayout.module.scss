@@ -1,0 +1,17 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: var(--default-layout-container-width, 1150px);
+    min-height: 100vh;
+    display: flex;
+}
+
+.content {
+    flex: 1;
+    // background-color: #ccc;
+    min-height: 100vh;
+}
