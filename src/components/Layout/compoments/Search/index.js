@@ -12,7 +12,7 @@ import * as request from 'src/untils/request';
 import * as searchServies from 'src/apiServies/searchServies';
 
 const cx = classNames.bind(styles);
-function Search() {
+function Search({ ...passProps }) {
     const [searchResult, setSearchResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [showResult, setShowResult] = useState(true);
@@ -45,48 +45,57 @@ function Search() {
     const headleHideResult = () => {
         setShowResult(false);
     };
+
+    const headleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
     return (
-        <HeadlessTippy
-            interactive={true}
-            visible={showResult && searchResult.length > 0}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                    <Popper>
-                        <h3 className={cx('search-title')}>account</h3>
-                        {searchResult.map((item) => (
-                            <AccountItem data={item} key={item.id} />
-                        ))}
-                    </Popper>
-                </div>
-            )}
-            onClickOutside={headleHideResult}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    required
-                    type="text"
-                    placeholder="Search account play video"
-                    spellCheck={false}
-                    onChange={(e) => {
-                        setSearchValue(e.target.value);
-                    }}
-                    onFocus={() => {
-                        setShowResult(true);
-                    }}
-                ></input>
-                {!!searchValue && !loading && (
-                    <button className={cx('search-clear')} onClick={headlClear}>
-                        <FontAwesomeIcon icon={faCircleXmark} />
-                    </button>
+        <div>
+            <HeadlessTippy
+                appendTo={() => document.body}
+                interactive={true}
+                visible={showResult && searchResult.length > 0}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                        <Popper>
+                            <h3 className={cx('search-title')}>account</h3>
+                            {searchResult.map((item) => (
+                                <AccountItem data={item} key={item.id} />
+                            ))}
+                        </Popper>
+                    </div>
                 )}
-                {loading && <FontAwesomeIcon icon={faSpinner} className={cx('loading')} />}
-                <button className={cx('search-btn')}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
-            </div>
-        </HeadlessTippy>
+                onClickOutside={headleHideResult}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        required
+                        type="text"
+                        placeholder="Search account play videos"
+                        spellCheck={false}
+                        onChange={headleChange}
+                        onFocus={() => {
+                            setShowResult(true);
+                        }}
+                    ></input>
+                    {!!searchValue && !loading && (
+                        <button className={cx('search-clear')} onClick={headlClear}>
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                    )}
+                    {loading && <FontAwesomeIcon icon={faSpinner} className={cx('loading')} />}
+                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
+                </div>
+            </HeadlessTippy>
+        </div>
     );
 }
 

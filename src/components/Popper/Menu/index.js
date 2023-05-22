@@ -36,6 +36,7 @@ function Menu({ children, items = [], onChange = defauleonChange }) {
             offset={[12, 8]}
             placement="bottom-end"
             delay={[0, 500]}
+            hideOnClick={false}
             interactive
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
@@ -48,7 +49,7 @@ function Menu({ children, items = [], onChange = defauleonChange }) {
                                 }}
                             />
                         )}
-                        {renderItem()}
+                        <div className={cx('menu-scroll')}>{renderItem()}</div>
                     </Popper>
                 </div>
             )}

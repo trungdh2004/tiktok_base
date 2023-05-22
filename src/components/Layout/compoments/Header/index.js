@@ -19,6 +19,9 @@ import Search from 'src/components/Layout/compoments/Search/index';
 import Menu from 'src/components/Popper/Menu';
 import { InboxIcon, MessageIcon, UploadIcon } from 'src/components/Icons';
 import LogoUser from 'src/components/imgs';
+import { Link } from 'react-router-dom';
+import routes from 'src/config/routes';
+
 const cx = classNames.bind(styles);
 //menu khi chưa đăng nhập
 const MENU_Items = [
@@ -88,9 +91,10 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                {/* logo */}
+                <Link to={routes.home} className={cx('logo')}>
                     <img src={images.logo} alt="tiktok"></img>
-                </div>
+                </Link>
 
                 <Search />
                 {/* search */}
