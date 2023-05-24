@@ -2,7 +2,7 @@ import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import images from '../../../../assets/images/indext';
+import images from 'src/assets/images/indext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faEllipsisVertical,
@@ -15,12 +15,12 @@ import {
     faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
 import Button from 'src/components/Button';
-import Search from 'src/components/Layout/compoments/Search/index';
+import Search from 'src/layouts/compoments/Search/index';
 import Menu from 'src/components/Popper/Menu';
 import { InboxIcon, MessageIcon, UploadIcon } from 'src/components/Icons';
 import LogoUser from 'src/components/imgs';
 import { Link } from 'react-router-dom';
-import routes from 'src/config/routes';
+import config from 'src/config/index';
 
 const cx = classNames.bind(styles);
 //menu khi chưa đăng nhập
@@ -58,7 +58,7 @@ const MENU_Items = [
 ];
 
 function Header() {
-    let currentUser = true;
+    let currentUser = false;
     // menu khi đăng nhập
     const userMenu = [
         {
@@ -92,7 +92,7 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 {/* logo */}
-                <Link to={routes.home} className={cx('logo')}>
+                <Link to={config.routes.home} className={cx('logo')}>
                     <img src={images.logo} alt="tiktok"></img>
                 </Link>
 

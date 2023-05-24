@@ -7,9 +7,7 @@ import AccountItem from 'src/components/AccountItem/indext';
 import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect, useRef } from 'react';
 import useDebounce from 'src/hooks/useDebount';
-import axios from 'axios';
-import * as request from 'src/untils/request';
-import * as searchServies from 'src/apiServies/searchServies';
+import * as searchServies from 'src/Servies/searchServies';
 
 const cx = classNames.bind(styles);
 function Search({ ...passProps }) {

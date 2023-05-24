@@ -5,6 +5,7 @@ import style from './Menu.module.scss';
 import MenuItem from './MenuItems';
 import Header from './Header';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const defauleonChange = () => {};
 
@@ -43,7 +44,7 @@ function Menu({ children, items = [], onChange = defauleonChange }) {
                     <Popper className={cx('menu-popper')}>
                         {history.length > 1 && (
                             <Header
-                                title={'Language'}
+                                title={current.title}
                                 onBack={() => {
                                     setHistory((prev) => prev.slice(0, prev.length - 1));
                                 }}
@@ -61,5 +62,11 @@ function Menu({ children, items = [], onChange = defauleonChange }) {
         </Tippy>
     );
 }
+
+Menu.propTypes = {
+    children: PropTypes.node.isRequired,
+    items: PropTypes.array,
+    onChange: PropTypes.func,
+};
 
 export default Menu;

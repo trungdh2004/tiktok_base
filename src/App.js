@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { publicRoutes } from './routes';
-import { DefaultLayout } from './components/Layout/indext.js';
+import { DefaultLayout } from 'src/layouts/indext.js';
 import { Fragment } from 'react';
 
 function App() {

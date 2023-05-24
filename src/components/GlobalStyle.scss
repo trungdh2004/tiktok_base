@@ -33,7 +33,13 @@
 html {
     font-size: 62.5%;
 }
-
+body {
+    font-family: 'ProximaNova', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    overflow-y: overlay;
+}
 //fonts Emmbeded
 @font-face {
     font-family: ProximaNova;
@@ -51,13 +57,6 @@ html {
     font-weight: 700;
 }
 
-body {
-    font-family: 'ProximaNova', sans-serif;
-    font-size: 1.6rem;
-    line-height: 1.5;
-    text-rendering: optimizeSpeed;
-    overflow-y: overlay;
-}
 button,
 input,
 [tabindex] {
@@ -69,7 +68,7 @@ button {
     font-family: var(--font-family);
 }
 
-a[href] {
+a {
     font-family: var(--font-family);
     text-decoration: none;
     color: var(--text-color);
