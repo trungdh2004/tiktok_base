@@ -58,7 +58,7 @@ const MENU_Items = [
 ];
 
 function Header() {
-    let currentUser = false;
+    let currentUser = true;
     // menu khi đăng nhập
     const userMenu = [
         {
